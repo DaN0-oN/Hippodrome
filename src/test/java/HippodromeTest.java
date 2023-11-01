@@ -65,10 +65,8 @@ class HippodromeTest {
             horses.add(mock(Horse.class));
         }
 
-        // Создаем объект Hippodrome
         Hippodrome hippodrome = new Hippodrome(horses);
 
-        // Вызываем метод move
         hippodrome.move();
 
         // Проверяем, что метод move вызван у всех лошадей
@@ -80,18 +78,10 @@ class HippodromeTest {
     @Test
     void testGetWinner() {
 
-        Horse horse1 = new Horse("Horse 1", 2.4);
-        Horse horse2 = new Horse("Horse 2", 3.5);
-        Horse horse3 = new Horse("Horse 3", 8.4);
-
-        List<Horse> horses = List.of(horse1, horse2, horse3);
-
-        Hippodrome hippodrome = new Hippodrome(horses);
         hippodrome.move();
-        hippodrome.getWinner();
 
         // Проверяем, что метод getWinner возвращает лошадь с наибольшим значением distance
-        assertEquals("Horse 3", hippodrome.getWinner().getName());
+        assertEquals("Cherry", hippodrome.getWinner().getName());
     }
 
     @Test
@@ -141,17 +131,22 @@ class HippodromeTest {
 
     @Test
     void testGetSpeed() {
-        assertEquals(2.5, horses.get(1).getSpeed(), 0.01); // Сравнение с плавающей точкой с погрешностью
+        assertEquals(2.5, horses.get(1).getSpeed(), 0.01);
     }
 
     @Test
     void testGetDistance() {
-        assertEquals(0.0, horses.get(1).getDistance(), 0.01); // Сравнение с плавающей точкой с погрешностью
+        List<Horse> horses = List.of(
+                new Horse("Bucephalus", 2.4, 10),
+                new Horse("Ace of Spades", 2.5, 5),
+                new Horse("Cherry", 3,11));
+
+        assertEquals(5.0, horses.get(1).getDistance(), 0.01);
     }
 
     @Test
     void testGetDistanceWithTwoParameterConstructor() {
-        assertEquals(0.0, horses.get(1).getDistance(), 0.01); // Сравнение с плавающей точкой с погрешностью
+        assertEquals(0.0, horses.get(1).getDistance(), 0.01);
     }
 
     @Test
